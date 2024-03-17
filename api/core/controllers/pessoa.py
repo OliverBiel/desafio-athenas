@@ -27,13 +27,13 @@ class PessoaViewSet(viewsets.ViewSet):
         return Response({'status': 'Pessoa excluída com sucesso'})
 
     def retrieve(self, request, pk=None):
-        pessoa = Pessoa.objects.get(pk=pk)
+        pessoa = PessoaService().get_person(pk)
         serializer = PessoaSerializer(pessoa)
         return Response(serializer.data)
 
 
 class PessoaListView(generics.ListAPIView):
-    queryset = Pessoa.objects.all()
+    queryset = PessoaService().list_person()
     serializer_class = PessoaSerializer
     filter_backends = [filters.SearchFilter]
     search_fields = ["nome", "dt_nascimento", "cpf"]

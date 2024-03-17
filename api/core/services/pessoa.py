@@ -16,6 +16,9 @@ class PessoaService:
     def delete_person(self, pessoa_id):
         pessoa = PessoaTask().change_person(pessoa_id)
         pessoa.delete()
+    
+    def get_person(self, pessoa_id):
+        return PessoaTask().get_person(pessoa_id)
 
-    def search_person(self, pessoa_id):
-        return PessoaTask().change_person(pessoa_id)
+    def list_person(self):
+        return PessoaTask().list_person()
