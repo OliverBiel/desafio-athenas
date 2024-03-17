@@ -1,5 +1,6 @@
 from django.db import models
 import uuid
+from django.core import validators
 
 class Pessoa(models.Model):
     id = models.UUIDField(
@@ -9,11 +10,17 @@ class Pessoa(models.Model):
     )
     nome = models.CharField(max_length=150)
     dt_nascimento = models.DateField(
-        verbose_name='Data de nascimento'
+        verbose_name='Data de nascimento',
     )
     cpf = models.CharField(
         max_length=14,
         unique=True,
+        validators=[
+            validators.RegexValidator(
+                regex=r'^\d{3}\.\d{3}\.\d{3}-\d{2}$',
+                message='O CPF deve estar no formato 999.999.999-99'
+            )
+        ]
     )
     sexo = models.CharField(
         max_length=1,
