@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Person } from './interfaces/person';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'athena';
+
+  result: Person[] = [];
+
+  setResult(data: Person[]) {
+    this.result = data;
+  }
 }

@@ -1,0 +1,50 @@
+<form [formGroup]="personForm">
+    <div class="modal-header">
+        <h4 class="modal-title">{{ title }}</h4>
+    </div>
+    <div class="modal-body">
+        <mat-form-field>
+            <mat-label>Nome completo</mat-label>
+            <input matInput type="text" formControlName="nome" placeholder="Nome completo">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>CPF</mat-label>
+            <input matInput type="text" formControlName="cpf" placeholder="CPF">
+        </mat-form-field>
+        
+        <mat-form-field appearance="fill">
+            <mat-label>Data de nascimento</mat-label>
+            <input matInput [matDatepicker]="datePicker" formControlName="dt_nascimento">
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="datePicker"></mat-datepicker-toggle>
+            <mat-datepicker #datePicker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Peso</mat-label>
+            <input matInput type="text" formControlName="peso" placeholder="Peso">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Altura</mat-label>
+            <input matInput type="text" formControlName="altura" placeholder="Altura">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Sexo</mat-label>
+            <mat-select formControlName="sexo">
+                <mat-option value="M">
+                  Masculino
+                </mat-option>
+                <mat-option value="F">
+                  Feminino
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="close()">Fechar</button>
+        <button type="button" class="btn btn-primary" (click)="save()">Salvar</button>
+    </div>
+</form>

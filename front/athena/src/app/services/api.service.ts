@@ -23,4 +23,12 @@ export class ApiService {
   postData(path: string, data: any) {
     return this.http.post(this.baseUrl + path, data, { headers: this.baseHeaders });
   };
+
+  putData(path: string, data: any) {
+    return this.http.put(this.baseUrl + path, data, { headers: this.baseHeaders });
+  };
+
+  delete(path: string) {
+    return this.http.delete(this.baseUrl + path, { headers: this.baseHeaders });
+  }
 }

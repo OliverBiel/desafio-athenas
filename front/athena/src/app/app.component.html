@@ -1,4 +1,4 @@
 <div class="container">
-  <app-search></app-search>
-  <app-result></app-result>
+  <app-search (result)="setResult($event)"></app-search>
+  <app-result [result]="result"></app-result>
 </div>

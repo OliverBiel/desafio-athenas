@@ -16,6 +16,7 @@ class PessoaTask:
     def delete_person(self, pessoa_id):
         pessoa = Pessoa.objects.get(pk=pessoa_id)
         pessoa.delete()
+        return pessoa
     
     def get_person(self, pessoa_id):
         return Pessoa.objects.get(pk=pessoa_id)
