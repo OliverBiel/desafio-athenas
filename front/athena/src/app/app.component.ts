@@ -25,7 +25,7 @@ export class AppComponent {
       this.search = params['search'];
     });
 
-    this.api.getData("pessoa/list").subscribe((data: any) => {
+    this.api.getData("pessoa/").subscribe((data: any) => {
       this.setResult(data);
     });
   }

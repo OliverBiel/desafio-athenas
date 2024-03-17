@@ -38,11 +38,6 @@ class PessoaViewSet(viewsets.ViewSet):
         peso = PessoaService().calculate_weight(pessoa)
         return Response({'peso': peso})
 
-    def list(self, request):
-        pessoas = PessoaService().list_person()
-        serializer = PessoaSerializer(pessoas, many=True)
-        return Response(serializer.data)
-
 
 class PessoaListView(generics.ListAPIView):
     queryset = PessoaService().list_person()
