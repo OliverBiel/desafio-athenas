@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Person } from './interfaces/person';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ApiService } from './services/api.service';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,10 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor (private router: Router,
-    private route: ActivatedRoute) {}
+  constructor (
+    private route: ActivatedRoute,
+    private api: ApiService,
+    ) {}
 
   title = 'athena';
 
@@ -20,6 +23,10 @@ export class AppComponent {
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.search = params['search'];
+    });
+
+    this.api.getData("pessoa/list").subscribe((data: any) => {
+      this.setResult(data);
     });
   }
 
