@@ -3,6 +3,7 @@ import { Person } from 'src/app/interfaces/person';
 import { ApiService } from 'src/app/services/api.service';
 import { Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-modal',
@@ -15,7 +16,8 @@ export class ModalComponent {
   @Output() closeModal = new EventEmitter<boolean>();
 
   constructor(
-    private apiService: ApiService
+    private apiService: ApiService,
+    private router: Router,
   ) { }
 
   isValid: boolean = false;
@@ -52,6 +54,10 @@ export class ModalComponent {
       this.apiService.putData('pessoa/update/' + this.person.id + '/', this.personForm.value).subscribe(() => {
         alert('Pessoa atualizada com sucesso!');
         this.close();
+        this.router.navigate(['/'],
+        {
+          queryParams: { search: this.personForm.value.cpf }
+        });
       });
     } else {
       // Formata a data para o formato aceito pelo backend (YYYY-MM-DD)
@@ -63,6 +69,10 @@ export class ModalComponent {
       this.apiService.postData('pessoa/create/', this.personForm.value).subscribe(() => {
         alert('Pessoa cadastrada com sucesso!');
         this.close();
+        this.router.navigate(['/'],
+        {
+          queryParams: { search: this.personForm.value.cpf }
+        });
       });
     }
   }
