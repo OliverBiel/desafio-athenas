@@ -16,9 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.urls.conf import include
+from core.controllers.pessoa import PessoaViewSet, PessoaListView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('pessoa/', include('core.urls')),
+    path('create/', PessoaViewSet.as_view({'post': 'create'}), name='create'),
+    path('update/<str:pk>/', PessoaViewSet.as_view({'put': 'update'}), name='update'),
+    path('delete/<str:pk>/', PessoaViewSet.as_view({'delete': 'destroy'}), name='delete'),
+    path('retrieve/<str:pk>/', PessoaViewSet.as_view({'get': 'retrieve'}), name='retrieve'),
+    path('', PessoaListView.as_view(), name='list'),
 ]

@@ -1,9 +1,11 @@
 from django.db import models
+import uuid
 
 class Pessoa(models.Model):
     id = models.UUIDField(
         primary_key=True,
         editable=False,
+        default=uuid.uuid4
     )
     nome = models.CharField(max_length=150)
     dt_nascimento = models.DateField(
@@ -11,6 +13,7 @@ class Pessoa(models.Model):
     )
     cpf = models.CharField(
         max_length=14,
+        unique=True,
     )
     sexo = models.CharField(
         max_length=1,
