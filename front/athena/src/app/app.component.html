@@ -1,5 +1,5 @@
 <div class="container">
-  <app-search (result)="setResult($event)"></app-search>
+  <app-search (result)="setResult($event)" [search]="search"></app-search>
   <app-result [result]="result"></app-result>
   <button class="fab" (click)="toggleModal()">+</button>
 </div>
