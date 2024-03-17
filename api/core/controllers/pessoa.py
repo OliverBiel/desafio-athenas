@@ -4,6 +4,7 @@ from rest_framework import filters, generics
 from core.models import Pessoa
 from core.serializers.pessoa import PessoaSerializer
 from core.services.pessoa import PessoaService
+from rest_framework.decorators import action
 
 class PessoaViewSet(viewsets.ViewSet):
     def create(self, request):
@@ -30,6 +31,12 @@ class PessoaViewSet(viewsets.ViewSet):
         pessoa = PessoaService().get_person(pk)
         serializer = PessoaSerializer(pessoa)
         return Response(serializer.data)
+
+    @action(detail=False, methods=['get'])
+    def calculate_weight(self, request, pk=None):
+        pessoa = PessoaService().get_person(pk)
+        peso = PessoaService().calculate_weight(pessoa)
+        return Response({'peso': peso})
 
 
 class PessoaListView(generics.ListAPIView):

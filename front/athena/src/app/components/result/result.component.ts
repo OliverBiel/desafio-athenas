@@ -30,7 +30,9 @@ export class ResultComponent {
     });
   };
   calculate(person: Person) {
-    console.log(person);
+    this.apiService.getData(`pessoa/calculate_weight/${person.id}`).subscribe((data: any) => {
+      alert(`O peso ideal para ${person.nome} é ${data.peso} kg.`);
+    });
   };
 
   closeModal() {

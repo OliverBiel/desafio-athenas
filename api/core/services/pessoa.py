@@ -22,3 +22,6 @@ class PessoaService:
 
     def list_person(self):
         return PessoaTask().list_person()
+
+    def calculate_weight(self, pessoa):
+        return PessoaTask().calculate_weight(pessoa)

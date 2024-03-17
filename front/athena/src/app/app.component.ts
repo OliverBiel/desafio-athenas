@@ -10,8 +10,13 @@ export class AppComponent {
   title = 'athena';
 
   result: Person[] = [];
-
+  showModal: boolean = false;
+  
   setResult(data: Person[]) {
     this.result = data;
+  }
+
+  toggleModal () {
+    this.showModal = !this.showModal;
   }
 }

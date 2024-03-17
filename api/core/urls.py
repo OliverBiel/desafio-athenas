@@ -23,5 +23,6 @@ urlpatterns = [
     path('update/<str:pk>/', PessoaViewSet.as_view({'put': 'update'}), name='update'),
     path('delete/<str:pk>/', PessoaViewSet.as_view({'delete': 'destroy'}), name='delete'),
     path('retrieve/<str:pk>/', PessoaViewSet.as_view({'get': 'retrieve'}), name='retrieve'),
+    path('calculate_weight/<str:pk>/', PessoaViewSet.as_view({'get': 'calculate_weight'}), name='calculate_weight'),
     path('', PessoaListView.as_view(), name='list'),
 ]

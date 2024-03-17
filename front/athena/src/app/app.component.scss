@@ -12,4 +12,22 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-top: 20px;
+
+    .fab {
+        position: fixed;
+        bottom: 50px;
+        right: 50px;
+        
+        padding: 10px 20px;
+        border-radius: 50%;
+        background-color: #66005a;
+        color: white;
+        cursor: pointer;
+        font-size: 30px;
+
+        &:hover {
+            background-color: #4d0042;
+        }
+    }
 }

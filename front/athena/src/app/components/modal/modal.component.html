@@ -11,6 +11,7 @@
         <mat-form-field>
             <mat-label>CPF</mat-label>
             <input matInput type="text" formControlName="cpf" placeholder="CPF">
+            <mat-hint>Ex: 000.000.000-00</mat-hint>
         </mat-form-field>
         
         <mat-form-field appearance="fill">
@@ -45,6 +46,6 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-danger" (click)="close()">Fechar</button>
-        <button type="button" class="btn btn-primary" (click)="save()">Salvar</button>
+        <button type="button" class="btn btn-primary" (click)="save()" [disabled]="!isValid">Salvar</button>
     </div>
 </form>

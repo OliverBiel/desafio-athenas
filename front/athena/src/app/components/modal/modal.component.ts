@@ -18,14 +18,23 @@ export class ModalComponent {
     private apiService: ApiService
   ) { }
 
+  isValid: boolean = false;
+
   personForm = new FormGroup({
     nome: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]),
     dt_nascimento: new FormControl('', [Validators.required]),
-    cpf: new FormControl('', [Validators.required, Validators.minLength(11), Validators.maxLength(14)]),
+    cpf: new FormControl('', [Validators.required, Validators.minLength(11), Validators.maxLength(14), Validators.pattern('^\\d{3}\\.\\d{3}\\.\\d{3}\\-\\d{2}$')]),
     peso: new FormControl('', [Validators.required]),
     altura: new FormControl('', [Validators.required]),
     sexo: new FormControl('', [Validators.required]),
   });
+
+  ngOnInit() {
+    this.personForm.valueChanges.subscribe(() => {
+      this.isValid = this.personForm.valid;
+    });
+
+  }
 
   ngOnChanges(): void {
     this.personForm.setValue({
@@ -45,7 +54,13 @@ export class ModalComponent {
         this.close();
       });
     } else {
-      this.apiService.postData('pessoa/create/', this.person).subscribe(() => {
+      // Formata a data para o formato aceito pelo backend (YYYY-MM-DD)
+      let formattedDate = new Date(this.personForm.value.dt_nascimento!);
+
+      this.personForm.value.dt_nascimento = formattedDate.toISOString().split('T')[0];
+      console.log(this.personForm.value.dt_nascimento);
+
+      this.apiService.postData('pessoa/create/', this.personForm.value).subscribe(() => {
         alert('Pessoa cadastrada com sucesso!');
         this.close();
       });

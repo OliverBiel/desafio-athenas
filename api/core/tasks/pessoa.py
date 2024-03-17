@@ -24,3 +24,5 @@ class PessoaTask:
     def list_person(self):
         return Pessoa.objects.all()
     
+    def calculate_weight(self, pessoa):
+        return f"{(72.7 * float(pessoa.altura) - 58.0):.2f}" if pessoa.sexo == 'M' else f"{(62.1 * float(pessoa.altura) - 44.7)}:.2f"

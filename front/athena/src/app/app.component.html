@@ -1,4 +1,7 @@
 <div class="container">
   <app-search (result)="setResult($event)"></app-search>
   <app-result [result]="result"></app-result>
+  <button class="fab" (click)="toggleModal()">+</button>
 </div>
+
+<app-modal (closeModal)="toggleModal()" *ngIf="showModal"></app-modal>
