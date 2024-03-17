@@ -16,10 +16,6 @@ export class ResultComponent {
   constructor(private apiService: ApiService) {
   }
 
-  // ngOnChanges() {
-    
-  // }
-
   edit(person: Person) {
     this.selectedPerson = person;
     this.showModal = true;
