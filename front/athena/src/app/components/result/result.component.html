@@ -1,1 +1,37 @@
-<p>result works!</p>
+<div class="container">
+    <ul>
+        <li *ngFor="let person of result">
+            <div class="data">
+                <div class="data-container">
+                    <h3>
+                        {{person.nome}}
+                    </h3>
+                    <p>
+                        <b>Data de Nascimento:</b> {{person.dt_nascimento|date}}
+                    </p>
+                </div>
+                <div class="data-container">
+                    <p>
+                        <b>CPF:</b> {{person.cpf}}
+                    </p>
+                    <p>
+                        <b>Sexo:</b> {{person.sexo == "M" ? "Masculino" : "Feminino"}}
+                    </p>
+                </div>
+                <div class="data-container">
+                    <p>
+                        <b>Altura:</b> {{person.altura}}
+                    </p>
+                    <p>
+                        <b>Peso:</b> {{person.peso}}
+                    </p>
+                </div>
+            </div>
+            <div class="actions">
+                <button class="btn btn-primary" (click)="edit(person)">Editar</button>
+                <button class="btn btn-danger" (click)="delete(person)">Excluir</button>
+                <button class="btn btn-secondary" (click)="calculate(person)">Calcular peso ideal</button>
+            </div>
+        </li>
+    </ul>
+</div>

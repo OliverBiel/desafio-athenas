@@ -1,1 +1,51 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+}
+
+.btn-primary {
+    background-color: #66005a;
+}
+
+.btn-primary:hover {
+    background-color: #4d0042;
+}
+
+.btn-secondary {
+    background-color: #ff6f61;
+}
+
+.btn-secondary:hover {
+    background-color: #e65c4f;
+}
+
+.btn-danger {
+    background-color: #a60e00;
+}
+
+.btn-danger:hover {
+    background-color: #8c0c00;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    background-color: #ccc;
+
+    &:hover {
+        cursor: not-allowed;
+        background-color: #ccc;
+    }
+}
