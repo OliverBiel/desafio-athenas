@@ -5,4 +5,4 @@ from core.models import Pessoa
 class PessoaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pessoa
-        fields = ["nome", "dt_nascimento", "cpf", "sexo", "altura", "peso",]
+        fields = ["id", "nome", "dt_nascimento", "cpf", "sexo", "altura", "peso",]
